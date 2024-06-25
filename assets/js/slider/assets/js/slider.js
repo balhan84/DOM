@@ -4,6 +4,23 @@ class Slider {
     this.slides = slides;
     this.currentIndex = currentIndex;
   }
+
+  set currentIndex(value) {
+    const { length } = this.slides;
+    //from 0 to slides.length - 1
+    if (typeof value !== "number") {
+      throw TypeError("value must be number");
+    }
+    if (!Number.isInteger(value) || value < 0 || value >= length) {
+      throw new RangeError(`index must be integer from 0 to ${length - 1}`);
+    }
+    this._currentIndex = value;
+  }
+
+  get currentIndex() {
+    return this._currentIndex;
+  }
+
   decIndex() {
     const {
       currentIndex,
