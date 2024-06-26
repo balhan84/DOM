@@ -71,22 +71,29 @@ try {
   // sliderImg.src = slides[currentSlideIndex].src;
   // sliderImg.alt = slides[currentSlideIndex].alt;
 
+  function changeSliderHandler(direction = "next") {
+    return () => {
+      slider[direction === "prev" ? "decIndex" : "incIndex"]();
+      updateSlider(slider.currentIndex);
+    };
+  }
+
   //при натисканні на prev відобразити попереднє зображення
 
-  prevBtn.onclick = () => {
+  prevBtn.onclick =
     //   if (currentSlideIndex > 0) {
     //     currentSlideIndex--;
     //   } else {
     //     currentSlideIndex = slides.length - 1;
     //   }
     //   currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    slider.decIndex();
-    updateSlider(slider.currentIndex);
-  };
+    // slider.decIndex();
+    // updateSlider(slider.currentIndex);
+    changeSliderHandler("prev");
 
   //при натисканні на next відобразити наступне зображення
 
-  nextBtn.onclick = () => {
+  nextBtn.onclick =
     //   if (currentSlideIndex < slides.length - 1) {
     //     currentSlideIndex++;
     //   } else {
@@ -94,9 +101,9 @@ try {
     //   }
 
     //   currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    slider.incIndex();
-    updateSlider(slider.currentIndex);
-  };
+    // slider.incIndex();
+    // updateSlider(slider.currentIndex);
+    changeSliderHandler("next");
 } catch (err) {
   sliderError();
 }
