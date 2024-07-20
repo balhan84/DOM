@@ -1,0 +1,17 @@
+.task {
+  padding: 10px;
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px greenyellow;
+}
+
+.redTask {
+  color: red;
+}
+
+.greenTask {
+  color: green;
+}
+.doneTask {
+  text-decoration: line-through;
+}
